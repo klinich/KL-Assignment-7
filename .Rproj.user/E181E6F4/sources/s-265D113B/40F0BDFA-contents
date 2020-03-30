@@ -9,7 +9,8 @@ output: html_notebook
 ```{r}
 my_function <- function(x,y,z){
  linear_model <- lm(y~x)
- p <-abs(resid(linear_model))
+ residual <- resid(linear_model)
+ p <- (head(abs(residual)))
 }
  return(head(p))
  
