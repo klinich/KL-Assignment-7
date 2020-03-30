@@ -9,6 +9,10 @@ output: html_notebook
 ```{r}
 my_function <- function(x,y,z){
  linear_model <- lm(y~x)
+ p <-abs(resid(linear_model))
+}
+ return(head(p))
+ 
 ```
 
 
