@@ -15,6 +15,8 @@ my_function <- function(x,y,p){
  final_resid <- (residual>=top_resid)
 }
  return(final_resid)
+
+library(here)
  
 ```
 
@@ -26,13 +28,18 @@ hsb2 <- read.csv("hsb2.csv",
                  sep = ",")
 hsb2
 
-hsb2_model <- lm(hsb2$math~hsb2$ses)
+p <- round(0.1*(nrow(hsb2$ses)))
+ 
+top_residuals <- 
 
 hsb2_residual<- resid(hsb2_model)
 
-hsb2_plot <- plot(hsb2$ses, hsb2_residual,
-                  xlab = "SES",
-                  ylab = "Residuals")
+hsb2_plot <- plot(hsb2$ses,hsb2$math,
+     main = "Relationship between SES and Math Scores",
+     xlab = "SES",
+     ylab = "Math Scores",
+     col = ifelse(, "red", "black"))
+hsb2_plot
 
 
 
