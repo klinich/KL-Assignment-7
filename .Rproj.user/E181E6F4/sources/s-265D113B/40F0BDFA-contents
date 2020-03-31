@@ -25,8 +25,18 @@ hsb2 <- read.csv("hsb2.csv",
                  sep = ",")
 hsb2
 
-hsb2_plot <- plot(hsb2$math~hsb2$read)
+hsb2_model <- lm(hsb2$math~hsb2$read)
+
+hsb2_residual<- resid(hsb2_model)
+
+hsb2_plot <- plot(hsb2_residual,
+                  xlab = "Student (ID Number)",
+                  ylab = "Residuals",
+                  col=(my_function(hsb2$read, hsb2$math, 20)), "red","blacK")
+                  
 hsb2_plot
+
+
 ```
 
 ```{r}
