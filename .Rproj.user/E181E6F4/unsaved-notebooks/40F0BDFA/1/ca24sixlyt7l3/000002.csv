@@ -1,0 +1,8 @@
+"0","hsb2 <- read.csv(""hsb2.csv"",
+                 header = TRUE
+                 sep = "","")
+"
+"2","Error: unexpected symbol in:
+""                 header = TRUE
+                 sep""
+"
