@@ -11,8 +11,9 @@ my_function <- function(x,y,z){
  linear_model <- lm(y~x)
  residual <- resid(linear_model)
  p <- (abs(residual))
+ largest_vector <- ifelse(head(p,z), TRUE, FALSE)
 }
- return(ifelse(head(p,z)),TRUE, FALSE)
+ return(largest_vector)
  
 ```
 
