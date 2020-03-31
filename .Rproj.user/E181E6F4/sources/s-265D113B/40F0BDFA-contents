@@ -7,14 +7,14 @@ output: html_notebook
 
 #1-------------------------------------------------------------------------------------------------
 ```{r}
-my_function <- function(x,y,z){
+my_function <- function(x,y,p){ 
  linear_model <- lm(y~x)
- residual <- resid(linear_model)
- p <- (abs(residual))
- top_resid <- subset(hsb2,hsb2$ses>quantile(hsb2$ses,prob=1-z/100)
- largest_vector <- ifelse(top_resid, TRUE, FALSE)
+ residual <- abs(resid(linear_model))
+ sort_resid <- sort(residual, decreasing = TRUE)
+ low_resid <- sort_resid[p]
+ final_resid <- (residual>=top_resid)
 }
- return(largest_vector)
+ return(final_resid)
  
 ```
 
@@ -30,13 +30,11 @@ hsb2_model <- lm(hsb2$math~hsb2$ses)
 
 hsb2_residual<- resid(hsb2_model)
 
-top_resid <- subset(hsb2,hsb2$ses>quantile(hsb2$ses,prob=1-z/100)
+hsb2_plot <- plot(hsb2$ses, hsb2_residual,
+                  xlab = "SES",
+                  ylab = "Residuals")
 
-hsb2_plot <- plot(hsb2_residual,
-                  xlab = "Student (ID Number)",
-                  ylab = "Residuals(Math Scores and SES)")
-                  
-                  
+
 
 
 
