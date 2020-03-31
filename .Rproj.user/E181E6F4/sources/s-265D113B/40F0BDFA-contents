@@ -24,6 +24,9 @@ hsb2 <- read.csv("hsb2.csv",
                  header = TRUE,
                  sep = ",")
 hsb2
+
+hsb2_plot <- plot(hsb2$math~hsb2$read)
+hsb2_plot
 ```
 
 
