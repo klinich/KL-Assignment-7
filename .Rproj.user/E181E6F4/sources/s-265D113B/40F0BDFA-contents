@@ -12,7 +12,7 @@ my_function <- function(x,y,p){
  residual <- abs(resid(linear_model))
  sort_resid <- sort(residual, decreasing = TRUE)
  low_resid <- sort_resid[p]
- final_resid <- (residual>=top_resid)
+ final_resid <- (residual>=low_resid)
 }
  return(final_resid)
 
@@ -22,24 +22,31 @@ library(here)
 
 
 #2-------------------------------------------------------------------------------------------------
-```{r}
+```{r include=FALSE}
 hsb2 <- read.csv("hsb2.csv",
                  header = TRUE,
                  sep = ",")
-hsb2
 
+hsb2
+```
+```{r echo=TRUE}
 p <- round(0.1*(nrow(hsb2$ses)))
- 
-top_residuals <- 
+
+```
+
+```{r}
+top_residuals <-my_function(hsb2$math, hsb2$ses, p)
 
 hsb2_residual<- resid(hsb2_model)
 
-hsb2_plot <- plot(hsb2$ses,hsb2$math,
+hsb2_plot <- plot(hsb2$ses~hsb2$math,
      main = "Relationship between SES and Math Scores",
      xlab = "SES",
      ylab = "Math Scores",
-     col = ifelse(, "red", "black"))
-hsb2_plot
+     col = ifelse(top_residuals, "red","black"))
+resid_model <- lm(hsb2$math~hsb2$ses)
+abline(resid_model
+
 
 
 
