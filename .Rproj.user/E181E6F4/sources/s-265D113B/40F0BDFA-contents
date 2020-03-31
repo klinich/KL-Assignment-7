@@ -10,9 +10,9 @@ output: html_notebook
 my_function <- function(x,y,z){
  linear_model <- lm(y~x)
  residual <- resid(linear_model)
- p <- (head(abs(residual)))
+ p <- (abs(residual))
 }
- return(head(p))
+ return(ifelse(head(p,z)),TRUE, FALSE)
  
 ```
 
