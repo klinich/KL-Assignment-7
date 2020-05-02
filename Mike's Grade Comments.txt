@@ -1,0 +1,10 @@
+
+You successfully created a repo and created some commits, but your code 
+is not in the repo, so there is nothing to grade! 
+ 
+You also should have used .Rproj.user in your .gitignore file. 
+ 
+If you want to add the code to your repo and use a stress buster, I can take 
+another look. 
+ 
+Score: 35/100 
