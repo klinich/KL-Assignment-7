@@ -1,0 +1,46 @@
+---
+title: Assignment 7
+author: Katy Linich
+date: 30 March, 2020
+output: html_notebook
+---
+
+#1-------------------------------------------------------------------------------------------------
+```{r}
+largest_residuals <- function(x,y,p) { 
+ linear_model <- lm(y~x)
+ residual <- abs(resid(linear_model))
+ sort_resid <- sort(residual, decreasing = TRUE)
+ low_resid <- sort_resid[p]
+ final_resid <- (residual>=low_resid)
+  return(final_resid)
+}
+```
+
+#2-------------------------------------------------------------------------------------------------
+```{r include=FALSE}
+hsb2 <- read.csv("hsb2.csv",
+                 header = TRUE,
+                 sep = ",")
+
+```
+```{r echo=TRUE}
+p <- round(0.1*(nrow(hsb2)))
+
+```
+
+```{r}
+top_residuals <-largest_residuals(hsb2$math, hsb2$ses, p)
+
+
+hsb2_plot <- plot(hsb2$math~hsb2$ses,
+     main = "Relationship between SES and Math Scores",
+     xlab = "SES",
+     ylab = "Math Scores",
+     col = ifelse(top_residuals, "red","black"))
+resid_model <- lm(hsb2$math~hsb2$ses)
+abline(resid_model)
+
+```
+
+
